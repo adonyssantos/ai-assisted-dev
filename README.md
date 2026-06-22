@@ -89,9 +89,9 @@ The same artifacts and subagents serve three ways of working — only the entry 
 
 ## Task tracking
 
-Default tracker: an **Obsidian Kanban board** at `docs/board.md` (see [[board]]). Install the
-*Kanban* community plugin and open the repo as a vault. The tracker is swappable — see
-[[task-tracking]] for **Jira** or **GitHub Projects** via MCP/CLI.
+Default tracker: an **Obsidian Kanban board** at `docs/board.md` (see [[board]]). Open the repo as a
+vault — the *Kanban* plugin is vendored under `.obsidian/plugins/`, so the board renders without any
+install. The tracker is swappable — see [[task-tracking]] for **Jira** or **GitHub Projects** via MCP/CLI.
 
 ## Documentation
 
@@ -99,16 +99,70 @@ All documentation follows [[documentation]]: YAML frontmatter on every doc, wiki
 cross-references, one Obsidian vault at the repo root. Operational files (`CLAUDE.md`, `AGENTS.md`,
 `.claude/**`) are exempt and keep their functional format.
 
-## Getting started
+## Configure the template for your project
 
-```bash
-$EDITOR docs/draft.md                 # capture the idea
-$EDITOR memory/constitution.md   # set the principles
-# then in Claude Code (Mode 1):
-/draft → /specify → /clarify → /plan → /tasks → /analyze → /tests → /implement
-# scaffold a feature folder by hand (optional):
-./scripts/new-feature.sh my-feature
+After cloning, configure the template **before** writing the first spec. Edit in this order:
+
+| Order | File | What to change | When |
+|---|---|---|---|
+| 1 | `docs/draft.md` | Capture your product idea (the north-star) | Before `/draft` |
+| 2 | `memory/constitution.md` | Adapt the principles (articles) to your project | Before `/plan` |
+| 3 | `.claude/settings.json` | Tune tool/command permissions | Before commands that need them |
+| 4 | `.claude/rules/` | Add project rules; import them from `CLAUDE.md` | As conventions emerge |
+| 5 | `AGENTS.md` + `projects/<name>/AGENTS.md` | Declare monorepo + per-project stack/conventions | When a project's language is chosen (`/plan`) |
+
+### Permissions — `.claude/settings.json`
+
+- `permissions.allow` / `permissions.deny` decide what runs without prompting; `deny` wins over `allow`.
+- Real env files are denied (`.env`, `.env.local`, `.env.*.local`); example envs are readable
+  (`.env.example`, `.env.sample`, `.env.template`) so the agent can learn variable names without secrets.
+- Add your project's commands as you adopt them. Example — allow your test runner (match your language):
+
+```json
+"allow": [
+  "Bash(pytest:*)",
+  "Bash(go test:*)",
+  "Bash(npm test:*)"
+]
 ```
+
+Keep entries narrow (a specific command, not blanket `Bash`).
+
+### Project rules — `.claude/rules/`
+
+Capture recurring conventions as rule files so they load every session:
+
+1. Create `.claude/rules/<name>.md` (optionally with `description` + `globs` frontmatter, like `.claude/rules/documentation.md`).
+2. Import it from `CLAUDE.md`:
+
+```
+@.claude/rules/<name>.md
+```
+
+Rule files are operational config — exempt from the documentation frontmatter requirement.
+
+### Principles — `memory/constitution.md`
+
+- Adapt, remove or add articles to fit your project; bump the **Version** on any change.
+- ⚠️ Some articles are cited **by number** in `.claude/agents/` and `templates/` (Article II = TDD,
+  Article IV = language-agnostic). If you **reorder or renumber** them, update those citations too.
+
+### Other config
+
+- **Obsidian / Kanban:** the vault is the repo root; the *Kanban* plugin is vendored under
+  `.obsidian/plugins/`, so the board renders on open — no install needed.
+- **Task tracker:** the board (`docs/board.md`) is the default; swap to Jira or GitHub Projects via
+  MCP/CLI — see [[task-tracking]].
+
+### First feature
+
+Once configured, run the flow in Claude Code:
+
+```
+/draft → /specify → /clarify → /plan → /tasks → /analyze → /tests → /implement
+```
+
+Or scaffold a feature folder by hand: `./scripts/new-feature.sh my-feature`.
 
 ## Principles
 
