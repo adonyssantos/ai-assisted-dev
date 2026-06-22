@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnp.*
+vendor/
+
+# Build output
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Coverage / test artifacts
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Claude Code local (no compartir)
+.claude/settings.local.json
+.claude/projects/
+
+# Obsidian — commit shared config, ignore per-user/volatile state
+.obsidian/workspace.json
+.obsidian/workspace*.json
+.obsidian/cache
+.obsidian/plugins/*/data.json
