@@ -5,13 +5,13 @@ description: Craft good tests — AAA structure, one behavior per test, boundary
 
 # Test Design
 
-How to write tests worth having. Underpins TDD (Constitution Art. II) and verifiability (Art. VI). Knowledge that `sdd-test-author` and `sdd-implementer` can load.
+How to write tests worth having. Underpins TDD (Constitution: tdd) and verifiability (Constitution: verifiability). Knowledge that `sdd-test-author` and `sdd-implementer` can load.
 
 ## Structure
 
 - **AAA**: Arrange (set up inputs/state) → Act (call the behavior once) → Assert (check the outcome). Keep the three visibly separated.
 - **One behavior per test**: a single logical assertion target. If a failure can't tell you what broke, split the test.
-- **Name for the behavior and the FR**: e.g. `refresh_rejects_expired_token__FR07`. The covered `FR-XX` should be obvious (traceability, Art. VII).
+- **Name for the behavior and the FR**: e.g. `refresh_rejects_expired_token__FR07`. The covered `FR-XX` should be obvious (traceability, Constitution: traceability).
 
 ## What to cover
 

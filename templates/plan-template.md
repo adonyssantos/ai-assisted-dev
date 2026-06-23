@@ -16,7 +16,7 @@ related: ["spec.md"]
 
 ## 1. Language & project
 
-- **Language / runtime:** _(decided here, per Article IV)_
+- **Language / runtime:** _(decided here, per Constitution: agnostic)_
 - **Target project:** `projects/<name>/` (new or existing)
 - **Rationale:** why this language fits this feature.
 

@@ -22,7 +22,7 @@ End-to-end walkthrough for a brand-new clone of this template: configure the rep
 Do this once, before drafting any feature. Each file below is linked relative to this page (`docs/getting-started/`).
 
 1. **State the idea.** Edit [the draft](../draft.md) — brain-dump WHAT you want to build, who it is for and why. This is the entry point the flow reads from.
-2. **Set the principles.** Edit [the constitution](../../memory/constitution.md) — adapt, remove or add articles, then bump its **version**. The subagents cite some articles by number (Article II = TDD, Article IV = language-agnostic), so if you reorder them, update the citations they mention.
+2. **Set the principles.** Edit [the constitution](../../memory/constitution.md) — adapt, remove or add articles, then bump its **version**. The subagents cite principles by **stable slug** (e.g. `Constitution: tdd`), not by article number, so reordering or renumbering articles never breaks a citation; only renaming a slug does.
 3. **Tune the harness.** Edit [the Claude settings](../../.claude/settings.json) — permissions, hooks and harness options for this repo.
 4. **Add project rules.** Drop new agent rules under [the rules folder](../../.claude/rules/) (one concern per file). They are `@import`-ed and steer every agent.
 5. **Set agent conventions.** Edit the root [AGENTS.md](../../AGENTS.md) for repo-wide stack/conventions, and add a **per-project** `AGENTS.md` under each `projects/<name>/` with that project's language, package manager and build/test/lint/run commands.

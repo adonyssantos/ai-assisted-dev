@@ -5,7 +5,7 @@ description: Error and exception conventions — fail fast, never swallow silent
 
 # Error Handling
 
-Make failures loud, contextual, and safe. Supports verifiability (Art. VI — failures are observable) and security (Art. IX — no internals leaked).
+Make failures loud, contextual, and safe. Supports verifiability (Constitution: verifiability — failures are observable) and security (Constitution: quality — no internals leaked).
 
 ## Principles
 

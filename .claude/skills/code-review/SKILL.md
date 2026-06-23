@@ -12,12 +12,12 @@ Reviews implementation diffs before merge. This is NOT spec review — `sdd-spec
 | Area | Check |
 |---|---|
 | Correctness | Does it do what the spec/FR says? Edge cases, off-by-one, null/empty, concurrency, boundaries handled? |
-| Tests (TDD) | Tests exist, are meaningful, assert real behavior, and would fail without the change. No tests weakened/skipped to pass (Art. II). |
-| Simplicity / YAGNI | Simplest solution that meets the requirement; no speculative abstraction or config (Art. V). |
+| Tests (TDD) | Tests exist, are meaningful, assert real behavior, and would fail without the change. No tests weakened/skipped to pass (Constitution: tdd). |
+| Simplicity / YAGNI | Simplest solution that meets the requirement; no speculative abstraction or config (Constitution: simplicity). |
 | Naming & idioms | Clear names; matches the existing style/idioms of that project. |
 | Error handling | Failures surface with context; no silent swallow; no internals leaked to users (see `error-handling`). |
 | Security smells | No secrets/credentials; no injection/taint; safe deserialization; safe deps (see `security-review`). |
-| Traceability | Diff maps to a spec id and `FR-XX`; commits/PR reference them (Art. VII). |
+| Traceability | Diff maps to a spec id and `FR-XX`; commits/PR reference them (Constitution: traceability). |
 | Dead code | No unused code, commented-out blocks, leftover debug logs, or unreachable branches. |
 
 ## Severity levels

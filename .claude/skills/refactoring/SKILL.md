@@ -5,7 +5,7 @@ description: Refactor safely under a green test suite — small reversible behav
 
 # Refactoring
 
-Refactoring changes structure, never behavior. Tests are the safety net. Honors Constitution Art. II (never weaken tests) and Art. V (simplicity / YAGNI).
+Refactoring changes structure, never behavior. Tests are the safety net. Honors Constitution: tdd (never weaken tests) and Constitution: simplicity (simplicity / YAGNI).
 
 ## Preconditions
 

@@ -5,7 +5,7 @@ description: Branch and pull-request conventions tied to the spec id — naming,
 
 # Git Workflow
 
-Branches and PRs are tied to a spec. Keeps work traceable (Constitution Art. VII) and reviewable.
+Branches and PRs are tied to a spec. Keeps work traceable (Constitution: traceability) and reviewable.
 
 ## Branch naming
 

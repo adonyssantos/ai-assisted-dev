@@ -5,7 +5,7 @@ description: Add third-party dependencies safely — justify each one, pin/lock 
 
 # Dependency Hygiene
 
-Every dependency is permanent attack surface and maintenance cost. Add deliberately. Honors YAGNI (Art. V) and "no secrets / safe code" (Art. IX).
+Every dependency is permanent attack surface and maintenance cost. Add deliberately. Honors YAGNI (Constitution: simplicity) and "no secrets / safe code" (Constitution: quality).
 
 ## Before adding a dependency
 

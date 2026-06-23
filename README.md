@@ -135,7 +135,7 @@ Rule files are operational config — exempt from the documentation frontmatter 
 ### Principles — `memory/constitution.md`
 
 - Adapt, remove or add articles to fit your project; bump the **Version** on any change.
-- ⚠️ Some articles are cited **by number** in `.claude/agents/` and `templates/` (Article II = TDD, Article IV = language-agnostic). If you **reorder or renumber** them, update those citations too.
+- Principles are cited by **stable slug** (e.g. `Constitution: tdd`), never by article number — declared in the constitution's *Principle index* and as an HTML anchor per article. You may reorder, renumber or retitle articles freely; citations survive. Only renaming/removing a **slug** requires updating citations — `scripts/validate.sh` fails on any citation whose slug is undefined.
 
 ### Other config
 

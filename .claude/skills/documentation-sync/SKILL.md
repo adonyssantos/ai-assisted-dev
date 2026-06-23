@@ -5,7 +5,7 @@ description: Keep docs in step with code after any change — enumerate affected
 
 # Documentation Sync
 
-After any code or behavior change, bring the docs back in line. This is a template differentiator: docs and code never silently diverge. Follows `.claude/rules/documentation.md` and Constitution Art. VIII.
+After any code or behavior change, bring the docs back in line. This is a template differentiator: docs and code never silently diverge. Follows `.claude/rules/documentation.md` and Constitution: docs-discipline.
 
 ## When to run
 

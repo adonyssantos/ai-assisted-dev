@@ -5,7 +5,7 @@ description: Evidence-first debugging method that writes a failing regression te
 
 # Systematic Debugging
 
-The backbone of maintenance work. Fix root causes, not symptoms, and prove the fix with a test. Reinforces TDD (Constitution Art. II): the regression test is written and fails before any code changes.
+The backbone of maintenance work. Fix root causes, not symptoms, and prove the fix with a test. Reinforces TDD (Constitution: tdd): the regression test is written and fails before any code changes.
 
 ## Procedure
 

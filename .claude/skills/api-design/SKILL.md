@@ -5,7 +5,7 @@ description: Contract-first API and interface design tied to specs/*/contracts/ 
 
 # API Design
 
-Design the contract before the implementation. The contract lives in `specs/*/contracts/` and is the source of truth (Constitution Art. I, Art. III — WHAT before HOW).
+Design the contract before the implementation. The contract lives in `specs/*/contracts/` and is the source of truth (Constitution: spec-first, Constitution: what-vs-how — WHAT before HOW).
 
 ## Contract-first
 

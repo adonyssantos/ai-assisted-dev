@@ -15,7 +15,7 @@ type(scope): imperative subject (<= 72 chars, no trailing period)
 Body — WHY the change is needed and WHAT it does at a high level.
 Wrap context here, not in the subject.
 
-Refs: NNN-slug FR-12          # traceability footer (Constitution Art. VII)
+Refs: NNN-slug FR-12          # traceability footer (Constitution: traceability)
 BREAKING CHANGE: describe the incompatible change and the migration path.
 ```
 

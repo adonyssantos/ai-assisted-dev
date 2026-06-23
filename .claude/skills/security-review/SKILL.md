@@ -5,7 +5,7 @@ description: Baseline language-agnostic security pass over a change — secrets 
 
 # Security Review
 
-A baseline security sweep of a change or codebase. Language-agnostic; speak in terms of the project's package manager, audit tool, and runtime. Reinforces Art. IX (no secrets in the repo).
+A baseline security sweep of a change or codebase. Language-agnostic; speak in terms of the project's package manager, audit tool, and runtime. Reinforces Constitution: quality (no secrets in the repo).
 
 ## Checks
 

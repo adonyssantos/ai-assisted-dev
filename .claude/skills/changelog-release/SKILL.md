@@ -11,7 +11,7 @@ A human-readable changelog plus disciplined versioning. Entries derive from conv
 
 - One `CHANGELOG.md`. Newest first. Keep an `## [Unreleased]` section at the top and move it under a version on release.
 - Group entries under these headings: **Added**, **Changed**, **Deprecated**, **Removed**, **Fixed**, **Security**.
-- Write for users, not as a raw commit dump: one line per change, with the spec id / ADR linked for traceability (Art. VII).
+- Write for users, not as a raw commit dump: one line per change, with the spec id / ADR linked for traceability (Constitution: traceability).
 
 | Commit type | Changelog heading |
 |---|---|
