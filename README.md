@@ -158,7 +158,7 @@ For a full step-by-step walkthrough, see the [quickstart](docs/getting-started/q
 
 Conventions are enforced, not just documented:
 
-- **`scripts/validate.sh`** — checks doc frontmatter, forbids `[[` wikilinks, verifies the Kanban block, scans example env files. Run it anytime; it must pass.
+- **`scripts/validate.sh`** — checks doc frontmatter, forbids Obsidian wikilink syntax, verifies the Kanban block, scans example env files. Run it anytime; it must pass.
 - **`scripts/check-traceability.sh`** — verifies every `FR-XX` has a board card tagged `#spec/NNN-slug`.
 - **Git hooks** (`.githooks/`) — enable once with `git config core.hooksPath .githooks`. `pre-commit`/`pre-push` run the validator; `commit-msg` enforces Conventional Commits. Bypass with `--no-verify`.
 - **Claude Code hook** (`.claude/settings.json`) — a non-blocking advisory doc-lint on edits.
