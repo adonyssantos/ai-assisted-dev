@@ -52,5 +52,4 @@ See the `contracts/` folder.
 
 ## 8. Test strategy (TDD)
 
-Tests are written first (red) by `sdd-test-author`, then implemented to green. State the test
-framework, the unit/integration/E2E split, and which `FR-XX` each test covers.
+Tests are written first (red) by `sdd-test-author`, then implemented to green. State the test framework, the unit/integration/E2E split, and which `FR-XX` each test covers.

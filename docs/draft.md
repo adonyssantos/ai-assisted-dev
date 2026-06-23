@@ -8,10 +8,7 @@ related: ["[[constitution]]", "[[workflow]]"]
 
 # Draft — Project / App Idea
 
-> Your **entry point**. Brain-dump the idea freely, in any shape — it need not be structured or
-> complete. When ready, run `/draft` (→ `sdd-drafter`) to turn it into candidate features, then
-> `/specify` to produce real specs in `specs/`. Keep this file as the product's living north-star;
-> rigor lives in the specs, [[constitution]] and [[board]].
+> Your **entry point**. Brain-dump the idea freely, in any shape — it need not be structured or complete. When ready, run `/draft` (→ `sdd-drafter`) to turn it into candidate features, then `/specify` to produce real specs in `specs/`. Keep this file as the product's living north-star; rigor lives in the specs, [[constitution]] and [[board]].
 
 ## What I want to build
 

@@ -8,9 +8,7 @@ related: ["[[workflow]]", "[[task-tracking]]", "[[board]]"]
 
 # Project Docs (Obsidian vault)
 
-The **repository root** is the Obsidian vault — open it in Obsidian to browse everything (specs,
-docs, `.claude/`, code) with working wikilinks. Install the community plugin **Kanban** so
-[[board]] renders as a board.
+The **repository root** is the Obsidian vault — open it in Obsidian to browse everything (specs, docs, `.claude/`, code) with working wikilinks. Install the community plugin **Kanban** so [[board]] renders as a board.
 
 ## Map
 
@@ -24,5 +22,4 @@ docs, `.claude/`, code) with working wikilinks. Install the community plugin **K
 
 ## Conventions
 
-Every documentation note carries YAML frontmatter and links related notes with `[[wikilinks]]`.
-See [[documentation]] for the full rule.
+Every documentation note carries YAML frontmatter and links related notes with `[[wikilinks]]`. See [[documentation]] for the full rule.

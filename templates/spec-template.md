@@ -10,8 +10,7 @@ related: []
 
 # Spec: FEATURE_NAME
 
-> Describe WHAT and WHY. **No technology, libraries or technical design.**
-> Mark every ambiguity with `[NEEDS CLARIFICATION: question]`.
+> Describe WHAT and WHY. **No technology, libraries or technical design.** Mark every ambiguity with `[NEEDS CLARIFICATION: question]`.
 
 ## 1. Problem / Motivation
 

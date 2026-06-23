@@ -8,8 +8,7 @@ related: ["[[workflow]]"]
 
 # projects/
 
-Code lives here. This is the **multi-language monorepo** root: each subfolder is an independent
-project in **any language**, fully self-contained.
+Code lives here. This is the **multi-language monorepo** root: each subfolder is an independent project in **any language**, fully self-contained.
 
 ## Adding a project
 

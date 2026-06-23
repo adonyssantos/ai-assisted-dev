@@ -1,17 +1,13 @@
 # AGENTS.md — Monorepo & multi-language conventions
 
-Read by Claude Code (and other agents) during `/plan` and `/implement`.
-This repo is a **language-agnostic monorepo**: it does not assume any single language.
+Read by Claude Code (and other agents) during `/plan` and `/implement`. This repo is a **language-agnostic monorepo**: it does not assume any single language.
 
 ## Monorepo model
 
-- Every project lives under `projects/<name>/` and is **self-contained**: its own source,
-  tests, dependency manifest and toolchain.
+- Every project lives under `projects/<name>/` and is **self-contained**: its own source, tests, dependency manifest and toolchain.
 - A project may be written in **any language** (Go, Python, Rust, Java, TypeScript, C#, …).
-- Each project SHOULD declare its own stack in `projects/<name>/AGENTS.md`. The agent reads the
-  **nearest** AGENTS.md: this root file for monorepo-wide rules, the project one for its stack.
-- No shared build tool is imposed. A polyglot task runner (e.g. `just`, `make`, `task`) at the
-  repo root is optional; if present, document its targets here.
+- Each project SHOULD declare its own stack in `projects/<name>/AGENTS.md`. The agent reads the **nearest** AGENTS.md: this root file for monorepo-wide rules, the project one for its stack.
+- No shared build tool is imposed. A polyglot task runner (e.g. `just`, `make`, `task`) at the repo root is optional; if present, document its targets here.
 
 ## Per-project manifest (`projects/<name>/AGENTS.md`)
 
@@ -39,5 +35,4 @@ Each project should answer:
 
 ## Choosing a language
 
-The language is a **plan-time decision** (`/plan`), recorded in the feature's `plan.md` and, when a
-new project is created, in its `projects/<name>/AGENTS.md`. The spec (`spec.md`) stays tech-free.
+The language is a **plan-time decision** (`/plan`), recorded in the feature's `plan.md` and, when a new project is created, in its `projects/<name>/AGENTS.md`. The spec (`spec.md`) stays tech-free.

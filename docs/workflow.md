@@ -9,13 +9,11 @@ related: ["[[constitution]]", "[[task-tracking]]", "[[board]]", "[[documentation
 
 # Spec-Driven + Test-Driven workflow
 
-Detailed guide to this repo's cycle. Work is **spec-driven** (code derives from specs) and
-**test-driven** (tests are written before the code that satisfies them).
+Detailed guide to this repo's cycle. Work is **spec-driven** (code derives from specs) and **test-driven** (tests are written before the code that satisfies them).
 
 ## How it runs: expert subagents
 
-Each step is owned by an expert subagent in `.claude/agents/`; the slash commands are thin launchers
-that delegate to them. The main agent can also auto-invoke a subagent by matching its description.
+Each step is owned by an expert subagent in `.claude/agents/`; the slash commands are thin launchers that delegate to them. The main agent can also auto-invoke a subagent by matching its description.
 
 | Step | Subagent | Command |
 |---|---|---|
@@ -37,19 +35,13 @@ docs/draft.md → /draft → /specify → /clarify → /plan → /tasks → /ana
 ## Three modes of operation
 
 ### Mode 1 — Greenfield (empty → all specs)
-Idea in `docs/draft.md`, `specs/` empty. `/draft` → per feature: `/specify` → `/clarify` → `/plan` →
-`/tasks` → `/analyze` → `/tests` → `/implement`.
+Idea in `docs/draft.md`, `specs/` empty. `/draft` → per feature: `/specify` → `/clarify` → `/plan` → `/tasks` → `/analyze` → `/tests` → `/implement`.
 
 ### Mode 2 — Sync (updated draft → reconcile specs)
-`docs/draft.md` edited, specs exist. `/sync` diffs draft vs specs → **NEW** (create), **CHANGED**
-(update), **UNCHANGED** (skip), **REMOVED** (mark obsolete or, with explicit confirmation, delete).
-Then `/clarify` → `/tasks` → `/tests` → `/implement` for the deltas. `FR-XX` ids stay stable so
-board cards survive.
+`docs/draft.md` edited, specs exist. `/sync` diffs draft vs specs → **NEW** (create), **CHANGED** (update), **UNCHANGED** (skip), **REMOVED** (mark obsolete or, with explicit confirmation, delete). Then `/clarify` → `/tasks` → `/tests` → `/implement` for the deltas. `FR-XX` ids stay stable so board cards survive.
 
 ### Mode 3 — Maintenance (mature product)
-`docs/draft.md` is a stable north-star. New feature → `/specify <feature>` → … . Bug/support → write a
-**failing regression test first**, fix under `projects/`, ADR if architectural. Keep [[board]] and
-specs living.
+`docs/draft.md` is a stable north-star. New feature → `/specify <feature>` → … . Bug/support → write a **failing regression test first**, fix under `projects/`, ADR if architectural. Keep [[board]] and specs living.
 
 ## TDD loop (per requirement)
 
