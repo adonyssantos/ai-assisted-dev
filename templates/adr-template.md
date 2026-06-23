@@ -15,7 +15,7 @@ Date: {{DATE}}
 
 ## Status
 
-Proposed | Accepted | Rejected | Superseded by [[adr/NNNN-...]]
+Proposed | Accepted | Rejected | Superseded by [[architecture/adr/NNNN-...]]
 
 ## Context
 

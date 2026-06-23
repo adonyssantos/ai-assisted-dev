@@ -34,7 +34,7 @@ Affected components, data flow, integrations. Diagram if helpful.
 |----------|---------------|-----------------------|--------|
 | … | … | … | FR-01 |
 
-Relevant architecture decisions → ADR in `docs/adr/`.
+Relevant architecture decisions → ADR in `docs/architecture/adr/`.
 
 ## 5. Data model
 
