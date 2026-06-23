@@ -17,5 +17,19 @@
       "Read(**/.env.local)",
       "Read(**/.env.*.local)"
     ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(sed -n 's/.*\"file_path\"[[:space:]]*:[[:space:]]*\"\\([^\"]*\\)\".*/\\1/p' | head -n1); case \"$f\" in *.md) :;; *) exit 0;; esac; case \"$f\" in */.claude/*|*/.github/*|*/.obsidian/*|*/README.md|*/AGENTS.md|*/CLAUDE.md) exit 0;; esac; [ -f \"$f\" ] || exit 0; if grep -q '\\[\\[' \"$f\" 2>/dev/null; then echo \"doc-lint advisory: $f has an Obsidian wikilink ([[...]]) — use a relative .md link instead.\"; fi; if [ \"$(head -n1 \"$f\" 2>/dev/null)\" != \"---\" ]; then echo \"doc-lint advisory: $f is missing YAML frontmatter (title, category, last_updated).\"; fi; exit 0",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   }
 }

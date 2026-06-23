@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# pre-commit — run repo-convention validator; block the commit on failure.
+# Enable: git config core.hooksPath .githooks
+# Bypass: git commit --no-verify
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+
+if [ -x "$ROOT/scripts/validate.sh" ]; then
+  if ! "$ROOT/scripts/validate.sh"; then
+    echo
+    echo "pre-commit: repo conventions failed. Fix the violations above, or bypass with:" >&2
+    echo "  git commit --no-verify" >&2
+    exit 1
+  fi
+else
+  echo "pre-commit: scripts/validate.sh not found or not executable — skipping." >&2
+fi

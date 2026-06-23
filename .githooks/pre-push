@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# pre-push — validate conventions and run the test task before pushing.
+# Enable: git config core.hooksPath .githooks
+# Bypass: git push --no-verify
+set -euo pipefail
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+# 1) Repo conventions.
+if [ -x "$ROOT/scripts/validate.sh" ]; then
+  if ! "$ROOT/scripts/validate.sh"; then
+    echo
+    echo "pre-push: repo conventions failed. Fix the violations above, or bypass with:" >&2
+    echo "  git push --no-verify" >&2
+    exit 1
+  fi
+else
+  echo "pre-push: scripts/validate.sh not found or not executable — skipping conventions." >&2
+fi
+
+# 2) Test task, if a repo-root task runner exists.
+if [ -f "$ROOT/justfile" ] || [ -f "$ROOT/Justfile" ]; then
+  if command -v just >/dev/null 2>&1; then
+    echo "pre-push: running 'just test'..."
+    if ! just test; then
+      echo "pre-push: 'just test' failed. Bypass with: git push --no-verify" >&2
+      exit 1
+    fi
+  else
+    echo "pre-push: justfile present but 'just' not installed — skipping tests." >&2
+  fi
+elif [ -f "$ROOT/Makefile" ]; then
+  if command -v make >/dev/null 2>&1; then
+    echo "pre-push: running 'make test'..."
+    if ! make test; then
+      echo "pre-push: 'make test' failed. Bypass with: git push --no-verify" >&2
+      exit 1
+    fi
+  else
+    echo "pre-push: Makefile present but 'make' not installed — skipping tests." >&2
+  fi
+else
+  echo "pre-push: no task runner found (justfile/Makefile). Wire up a 'test' target to run tests here." >&2
+fi

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# commit-msg — enforce Conventional Commits: type(scope?): subject
+# Enable: git config core.hooksPath .githooks
+# Bypass: git commit --no-verify
+set -euo pipefail
+
+MSG_FILE="$1"
+
+# First non-comment, non-empty line is the subject.
+subject="$(grep -vE '^[[:space:]]*#' "$MSG_FILE" | grep -vE '^[[:space:]]*$' | head -n1 || true)"
+
+# Allow merge/revert/fixup/squash auto-messages through.
+case "$subject" in
+  Merge\ *|Revert\ *|fixup!\ *|squash!\ *) exit 0 ;;
+esac
+
+types='feat|fix|docs|chore|refactor|test|perf|build|ci|style|revert'
+# type, optional (scope), optional !, ": ", non-empty subject.
+pattern="^(${types})(\([a-z0-9._/-]+\))?(!)?: .+"
+
+if printf '%s' "$subject" | grep -Eq "$pattern"; then
+  exit 0
+fi
+
+cat >&2 <<EOF
+commit-msg: not a Conventional Commit.
+
+  Got:      ${subject:-<empty>}
+  Expected: type(scope?): subject
+  Types:    feat fix docs chore refactor test perf build ci style revert
+  Example:  feat(validate): add frontmatter check
+
+Fix the message, or bypass with:  git commit --no-verify
+EOF
+exit 1
