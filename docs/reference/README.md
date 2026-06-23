@@ -12,4 +12,6 @@ Information-oriented material: precise descriptions of configuration, commands, 
 
 ## Notes
 
-_No notes yet — add reference pages here. Create one from [the reference template](../../templates/reference-template.md), then link it back to this MOC and give it a `related` relative link._
+- [Capabilities — commands, subagents & skills](capabilities.md) — the single map of every command, subagent and skill, with the overlaps resolved.
+
+Add more reference pages here. Create one from [the reference template](../../templates/reference-template.md), then link it back to this MOC and give it a `related` relative link.
