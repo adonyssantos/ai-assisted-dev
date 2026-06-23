@@ -38,7 +38,7 @@ Every requirement must be testable. Every task must have an objective acceptance
 
 ## Article VII — Traceability
 
-Every technical decision and every task links back to the requirement that originated it. Architecture decisions are recorded as ADRs in `docs/adr/`. Tasks live on the board in `docs/board.md`.
+Every technical decision and every task links back to the requirement that originated it. Architecture decisions are recorded as ADRs in `docs/architecture/adr/`. Tasks live on the board in `docs/board.md`.
 
 ## Article VIII — Documentation discipline
 

@@ -50,7 +50,7 @@ The same artifacts and subagents serve three ways of working — only the entry 
 ### Mode 3 — Maintenance: a mature product
 `docs/draft.md` is a stable north-star, not the daily driver.
 - **New feature:** `/specify <feature>` → … → `/tests` → `/implement`.
-- **Bug fix / support:** write a **failing regression test first**, fix under `projects/<name>/`, add an ADR in `docs/adr/` if architectural.
+- **Bug fix / support:** write a **failing regression test first**, fix under `projects/<name>/`, add an ADR in `docs/architecture/adr/` if architectural.
 - **Keep records living:** update the affected `spec.md` when behavior changes.
 
 ## Layout
@@ -68,12 +68,17 @@ The same artifacts and subagents serve three ways of working — only the entry 
 │   ├── agents/               # Expert subagents (sdd-*, incl. sdd-spec-reviewer)
 │   ├── rules/documentation.md# Documentation rule (frontmatter + wikilinks)
 │   └── settings.json         # Shared repo config (.env.example readable, real .env denied)
-├── docs/                     # Vault content (Obsidian)
+├── docs/                     # Vault content (Obsidian) — Diátaxis-style sections, each with a MOC README
+│   ├── README.md             # Top-level Map of Content
 │   ├── draft.md              # ENTRY POINT — your raw app idea (brain dump)
 │   ├── board.md              # Kanban board (all tasks)
-│   ├── workflow.md           # SDD + TDD flow
-│   ├── task-tracking.md      # Board / Jira / GitHub Projects
-│   └── adr/                  # Architecture Decision Records
+│   ├── framework/            # SDD + TDD process (workflow.md, task-tracking.md)
+│   ├── getting-started/      # Learning-oriented tutorials
+│   ├── guides/               # Task-oriented how-tos
+│   ├── reference/            # Information-oriented lookups
+│   ├── architecture/         # System design + adr/ (Architecture Decision Records)
+│   ├── operations/           # Runbooks, deploy, monitoring
+│   └── domain/               # Glossary + domain concepts
 ├── projects/                 # Multi-language code — one self-contained project per subfolder
 └── scripts/new-feature.sh    # Scaffolds specs/NNN-slug/ from templates
 ```
