@@ -62,5 +62,6 @@ In Mode 3, `docs/draft.md` is a stable north-star, not the daily driver. Never d
 
 - Features: `specs/NNN-slug/` (NNN = 3-digit sequential).
 - Code: `projects/<name>/` — self-contained, any language, own toolchain + optional `AGENTS.md`.
+- New `projects/<name>/` → the AI suggests adding it (`{ "path": "projects/<name>" }`) to `ai-assisted-dev.code-workspace` (suggestion only; applied with the user's OK).
 - Base skeletons live in `templates/`.
 - The repository root is an **Obsidian vault**; documentation uses YAML frontmatter and wikilinks.

@@ -26,6 +26,7 @@ Rules:
 - Keep dependency manifests and lockfiles inside the project.
 - The language is chosen during `/plan` for the feature that creates the project.
 - Tests come first (TDD): `sdd-test-author` writes failing tests before `sdd-implementer` codes.
+- After creating `projects/<name>/`, the AI suggests adding it to `ai-assisted-dev.code-workspace` so it becomes its own root folder in the workspace — adding `{ "path": "projects/<name>" }` to the `folders` array (suggestion only; applied with the user's OK, never edited silently).
 
 ## Examples
 

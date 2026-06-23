@@ -8,6 +8,7 @@ Read by Claude Code (and other agents) during `/plan` and `/implement`. This rep
 - A project may be written in **any language** (Go, Python, Rust, Java, TypeScript, C#, …).
 - Each project SHOULD declare its own stack in `projects/<name>/AGENTS.md`. The agent reads the **nearest** AGENTS.md: this root file for monorepo-wide rules, the project one for its stack.
 - No shared build tool is imposed. A polyglot task runner (e.g. `just`, `make`, `task`) at the repo root is optional; if present, document its targets here.
+- New project under `projects/<name>/` → suggest adding `{ "path": "projects/<name>" }` to `ai-assisted-dev.code-workspace` (suggestion only; apply with user OK).
 
 ## Per-project manifest (`projects/<name>/AGENTS.md`)
 
