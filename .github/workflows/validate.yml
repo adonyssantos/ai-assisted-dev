@@ -1,0 +1,23 @@
+name: validate
+
+# 100%-generic, language-agnostic gate.
+# Runs the convention/documentation validator on every push and PR.
+# Dependency-free: ubuntu-latest + bash only.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: conventions & docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run validator
+        run: bash scripts/validate.sh

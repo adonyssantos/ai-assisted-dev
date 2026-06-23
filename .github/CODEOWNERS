@@ -1,0 +1,13 @@
+# CODEOWNERS — auto-request reviews from owners when matching paths change.
+# Uncomment and set real owners (GitHub @user or @org/team). Last match wins.
+# Docs: https://docs.github.com/articles/about-code-owners
+#
+# Default owner for everything in the repo:
+# * @your-username
+#
+# Per-area examples (more specific paths override the default above):
+# /.github/        @your-username
+# /specs/          @your-username
+# /docs/           @your-username
+# /projects/web/   @your-username @your-org/frontend
+# /projects/api-go/ @your-org/backend

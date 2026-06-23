@@ -1,0 +1,39 @@
+# Dependabot — keep dependencies up to date.
+# Docs: https://docs.github.com/code-security/dependabot/dependabot-version-updates
+#
+# As shipped, only GitHub Actions are tracked (the template has no projects yet).
+# Add one `package-ecosystem` block per project as you create them — see examples below.
+
+version: 2
+updates:
+  # Keep the Actions used in .github/workflows/ current.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+
+  # --- Per-project ecosystems (uncomment & set `directory` to projects/<name>) ---
+  #
+  # Node (npm):
+  # - package-ecosystem: npm
+  #   directory: /projects/web
+  #   schedule:
+  #     interval: weekly
+  #
+  # Python (pip / requirements.txt, pyproject):
+  # - package-ecosystem: pip
+  #   directory: /projects/etl-python
+  #   schedule:
+  #     interval: weekly
+  #
+  # Go modules:
+  # - package-ecosystem: gomod
+  #   directory: /projects/api-go
+  #   schedule:
+  #     interval: weekly
+  #
+  # Rust (cargo):
+  # - package-ecosystem: cargo
+  #   directory: /projects/cli-rust
+  #   schedule:
+  #     interval: weekly

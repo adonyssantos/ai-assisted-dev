@@ -1,0 +1,142 @@
+name: tests
+
+# Language-agnostic SKELETON for per-project tests under projects/<name>/.
+#
+# The template ships with NO projects, so this workflow is a NO-OP that
+# SUCCEEDS on an empty (or non-existent) projects/ directory. As you add
+# real projects, either rely on the generic discovery job below (which runs
+# `just test` / `make test` when a justfile/Makefile is present) or replace
+# it with a proper per-language matrix using the commented examples further down.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Generic discovery job — works with zero projects (no-op) and grows with you.
+  # For each projects/<name>/ it runs `just test` or `make test` if a
+  # justfile/Makefile exists; otherwise it prints guidance and keeps going.
+  # ---------------------------------------------------------------------------
+  discover:
+    name: per-project tests (generic)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run tests for each project (no-op when projects/ is empty)
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -d projects ]; then
+            echo "No projects/ directory yet — nothing to test."
+            exit 0
+          fi
+          found=0
+          # Iterate immediate subdirectories of projects/ only.
+          for dir in projects/*/; do
+            [ -d "$dir" ] || continue          # skip if glob did not match
+            name="$(basename "$dir")"
+            found=1
+            echo "::group::project: $name"
+            if [ -f "$dir/justfile" ] || [ -f "$dir/Justfile" ]; then
+              echo "justfile found -> running 'just test' in $dir"
+              ( cd "$dir" && just test )
+            elif [ -f "$dir/Makefile" ] || [ -f "$dir/makefile" ]; then
+              echo "Makefile found -> running 'make test' in $dir"
+              ( cd "$dir" && make test )
+            else
+              echo "No justfile/Makefile in $dir."
+              echo "Add a 'test' target (justfile or Makefile) that runs this"
+              echo "project's tests with its native tooling, or wire it into the"
+              echo "per-language matrix in .github/workflows/tests.yml."
+            fi
+            echo "::endgroup::"
+          done
+          if [ "$found" -eq 0 ]; then
+            echo "projects/ is empty — nothing to test. (Skeleton no-op.)"
+          fi
+
+  # ===========================================================================
+  # HOW TO ADD A REAL PER-LANGUAGE MATRIX
+  # ===========================================================================
+  # Prefer one job per language so each gets its own toolchain/cache. Drop the
+  # `discover` job above once you have explicit jobs, or keep both during the
+  # transition. Uncomment and adapt the snippets you need.
+  #
+  # --- Node (npm) ------------------------------------------------------------
+  # node:
+  #   name: node tests
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       project: [web, api-node]      # projects/web, projects/api-node
+  #   defaults:
+  #     run:
+  #       working-directory: projects/${{ matrix.project }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
+  #         cache: npm
+  #         cache-dependency-path: projects/${{ matrix.project }}/package-lock.json
+  #     - run: npm ci
+  #     - run: npm test
+  #
+  # --- Python (pytest) -------------------------------------------------------
+  # python:
+  #   name: python tests
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       project: [etl-python]         # projects/etl-python
+  #   defaults:
+  #     run:
+  #       working-directory: projects/${{ matrix.project }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-python@v5
+  #       with:
+  #         python-version: '3.12'
+  #         cache: pip
+  #     - run: pip install -r requirements.txt
+  #     - run: pytest
+  #
+  # --- Go --------------------------------------------------------------------
+  # go:
+  #   name: go tests
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       project: [api-go]             # projects/api-go
+  #   defaults:
+  #     run:
+  #       working-directory: projects/${{ matrix.project }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-go@v5
+  #       with:
+  #         go-version: '1.22'
+  #         cache-dependency-path: projects/${{ matrix.project }}/go.sum
+  #     - run: go test ./...
+  #
+  # --- Rust (cargo) ----------------------------------------------------------
+  # rust:
+  #   name: rust tests
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       project: [cli-rust]           # projects/cli-rust
+  #   defaults:
+  #     run:
+  #       working-directory: projects/${{ matrix.project }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: dtolnay/rust-toolchain@stable
+  #     - run: cargo test
+  # ===========================================================================
