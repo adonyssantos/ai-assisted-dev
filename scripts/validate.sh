@@ -14,7 +14,12 @@
 #   2. Wikilinks    — no Obsidian wikilinks ([[...]]) in any .md outside .obsidian/.
 #   3. Kanban board — docs/board.md keeps `kanban-plugin: board` frontmatter and
 #                     the `%% kanban:settings %%` block.
-#   4. Secrets      — .env.example-style files contain no obvious real secrets
+#   4. Board cards  — every card line in docs/board.md follows the card grammar
+#                     (links a task note, carries FR-XX + #spec/NNN-slug). Keeps the
+#                     board renderable (see .claude/rules/board.md).
+#   5. Citations    — every `Constitution: <slug>` citation references a slug that
+#                     is actually defined in memory/constitution.md (renumber-proof).
+#   6. Secrets      — .env.example-style files contain no obvious real secrets
 #                     (WARN only; never fails the run).
 #
 # Usage: scripts/validate.sh [--help]
@@ -43,7 +48,11 @@ Checks (deterministic, low-false-positive):
                    and .github/.
   3. Kanban board  docs/board.md keeps its kanban-plugin frontmatter and the
                    %% kanban:settings %% block.
-  4. Secrets       .env.example-style files have no obvious real secrets (warn).
+  4. Board cards   Every card line in docs/board.md links a task note and carries
+                   FR-XX + #spec/NNN-slug on the same line (.claude/rules/board.md).
+  5. Citations     Every `Constitution: <slug>` citation references a slug defined
+                   in memory/constitution.md.
+  6. Secrets       .env.example-style files have no obvious real secrets (warn).
 
 Bypass: this script is advisory by exit code; git hooks that call it can be
 skipped with `git commit --no-verify` (see .githooks/README.md).
@@ -83,7 +92,7 @@ doc_md_files() {
 }
 
 # ---- Rule 1: frontmatter ---------------------------------------------------
-echo "[1/4] Frontmatter (title, category, last_updated) on documentation .md"
+echo "[1/6] Frontmatter (title, category, last_updated) on documentation .md"
 while IFS= read -r f; do
   [ -n "$f" ] || continue
   if [ "$(head -n1 "$f")" != "---" ]; then
@@ -110,7 +119,7 @@ $(doc_md_files)
 EOF
 
 # ---- Rule 2: no wikilinks --------------------------------------------------
-echo "[2/4] No Obsidian wikilinks ([[...]]) in .md outside .obsidian/ and .github/"
+echo "[2/6] No Obsidian wikilinks ([[...]]) in .md outside .obsidian/ and .github/"
 # grep returns 1 when nothing matches; tolerate that under set -e.
 wl="$(grep -rn --include='*.md' -e '\[\[' . 2>/dev/null | grep -v '/\.obsidian/' | grep -v '/\.git/' | grep -v '/\.github/' || true)"
 if [ -n "$wl" ]; then
@@ -124,7 +133,7 @@ else
 fi
 
 # ---- Rule 3: docs/board.md kanban integrity --------------------------------
-echo "[3/4] docs/board.md Kanban integrity"
+echo "[3/6] docs/board.md Kanban integrity"
 BOARD="docs/board.md"
 if [ ! -f "$BOARD" ]; then
   fail "$BOARD — file missing"
@@ -142,8 +151,62 @@ else
   fi
 fi
 
-# ---- Rule 4: secrets in .env.example-style files (warn only) ---------------
-echo "[4/4] No obvious real secrets in .env.example-style files (warn only)"
+# ---- Rule 4: board card grammar --------------------------------------------
+echo "[4/6] docs/board.md card grammar (task-note link + FR-XX + #spec tag)"
+if [ ! -f "$BOARD" ]; then
+  warn "$BOARD missing — skipping card grammar"
+else
+  cards="$(grep -nE '^[[:space:]]*-[[:space:]]\[( |x|X)\]' "$BOARD" || true)"
+  if [ -z "$cards" ]; then
+    pass "$BOARD — no cards yet"
+  else
+    bad=0
+    while IFS= read -r cline; do
+      [ -n "$cline" ] || continue
+      ctext="${cline#*:}"   # strip leading "lineno:"
+      problems=""
+      printf '%s' "$ctext" | grep -Eq '\]\([^)]+\.md([)#])' || problems="$problems no-task-note-link"
+      printf '%s' "$ctext" | grep -Eq 'FR-[0-9]+'            || problems="$problems no-FR-id"
+      printf '%s' "$ctext" | grep -Eq '#spec/[A-Za-z0-9._-]+' || problems="$problems no-#spec-tag"
+      if [ -n "$problems" ]; then
+        fail "$BOARD card line ${cline%%:*} —$problems"
+        bad=$((bad+1))
+      fi
+    done <<EOF
+$cards
+EOF
+    [ "$bad" -eq 0 ] && pass "$BOARD — all cards well-formed"
+  fi
+fi
+
+# ---- Rule 5: constitution citations resolve to defined slugs ----------------
+echo "[5/6] Constitution citations reference slugs defined in memory/constitution.md"
+CONST="memory/constitution.md"
+if [ ! -f "$CONST" ]; then
+  warn "$CONST missing — skipping citation check"
+else
+  defined="$(grep -oE '<a id="[a-z0-9-]+"></a>' "$CONST" | sed -E 's/.*id="([a-z0-9-]+)".*/\1/' | sort -u)"
+  if [ -z "$defined" ]; then
+    warn "$CONST defines no <a id> slugs — skipping citation check"
+  else
+    cites="$(grep -rhoE 'Constitution: [a-z0-9-]+' --include='*.md' \
+              --exclude-dir=.git --exclude-dir=node_modules . 2>/dev/null \
+            | sed -E 's/Constitution: //' | sort -u || true)"
+    bad=0
+    for c in $cites; do
+      if printf '%s\n' "$defined" | grep -qx "$c"; then
+        :
+      else
+        fail "citation 'Constitution: $c' — slug not defined in $CONST"
+        bad=$((bad+1))
+      fi
+    done
+    [ "$bad" -eq 0 ] && pass "all Constitution citations resolve to defined slugs"
+  fi
+fi
+
+# ---- Rule 6: secrets in .env.example-style files (warn only) ---------------
+echo "[6/6] No obvious real secrets in .env.example-style files (warn only)"
 env_examples="$(find . -type f \
   \( -name '*.env.example' -o -name '.env.example' \
      -o -name '*.env.sample' -o -name '.env.sample' \

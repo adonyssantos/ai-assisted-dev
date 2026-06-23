@@ -24,7 +24,7 @@ That is all — every hook below activates immediately. To disable, run `git con
 
 | Hook | When it runs | What it does | Blocks on failure |
 |---|---|---|---|
-| `pre-commit` | Before a commit is recorded | Runs `scripts/validate.sh` (frontmatter, no wikilinks, board integrity, secret scan) | Yes |
+| `pre-commit` | Before a commit is recorded | Runs `scripts/validate.sh` (frontmatter, no wikilinks, board integrity, board-card grammar, constitution-citation slugs, secret scan) | Yes |
 | `commit-msg` | After you write the commit message | Validates the message is a Conventional Commit (`type(scope?): subject`) | Yes |
 | `pre-push` | Before pushing to a remote | Runs `scripts/validate.sh`, then `just test` or `make test` if a task runner exists | Yes |
 
