@@ -9,6 +9,7 @@ A **language-agnostic, multi-language monorepo** built with **Spec-Driven Develo
 @memory/constitution.md
 @AGENTS.md
 @.claude/rules/documentation.md
+@.claude/rules/board.md
 
 ## How we work: subagents, not monolithic commands
 
@@ -56,7 +57,7 @@ In Mode 3, `docs/draft.md` is a stable north-star, not the daily driver. Never d
 | Flag, don't assume | Mark every ambiguity `[NEEDS CLARIFICATION: ...]`; never invent business rules. |
 | Constitution wins | If a decision contradicts `memory/constitution.md`, stop and ask. |
 | Documentation rule | Every documentation `.md` follows `.claude/rules/documentation.md` (frontmatter + relative links). |
-| Tasks → board | All tasks live in `docs/board.md` (Obsidian Kanban). See `docs/framework/task-tracking.md` for Jira / GitHub Projects alternatives. |
+| Tasks → board | Each task is a note in `specs/NNN-slug/tasks/` plus a one-line linking card in `docs/board.md` (Obsidian Kanban). Follow `.claude/rules/board.md` exactly so the board never breaks. See `docs/framework/task-tracking.md` for Jira / GitHub Projects alternatives. |
 | Enforcement | `scripts/validate.sh` + git hooks (`.githooks/`, enable via `git config core.hooksPath .githooks`) + CI (`.github/workflows/`) enforce these conventions. Keep `validate.sh` green; PRs use the Definition-of-Done template. |
 
 ## File conventions

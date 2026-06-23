@@ -13,13 +13,20 @@ Tasks are decoupled from the rest of the flow so the tracker is **swappable**. `
 
 ## Default — Obsidian Kanban ([board](../board.md))
 
-- Single markdown file in the Obsidian *Kanban* plugin format (`docs/board.md`).
-- Lanes: `Backlog → In Progress → In Review → Done` (rename/add as you like).
-- Card format: `- [ ] FR-XX — <task> #spec/NNN-slug`. TDD pairs: `FR-01 (test)` then `FR-01 (impl)`.
-- Tags (`#spec/NNN-slug`) tie each card to its spec for traceability.
-- Editable as plain markdown by the agent **and** as a visual board in Obsidian.
+The board holds **thin cards**; the full detail of each task lives in a **task note**. This keeps the board renderable and the detail version-controlled with its feature. The exact, never-break rules are in [board rule](../../.claude/rules/board.md).
+
+- **Board file:** a single markdown file in the Obsidian *Kanban* plugin format (`docs/board.md`).
+- **Lanes:** `Backlog → In Progress → In Review → Done` (the four defaults are fixed; add extra lanes after `Done`).
+- **Task note:** one note per task at `specs/NNN-slug/tasks/FR-XX-(test|impl).md`, created from [task-template](../../templates/task-template.md) — requirement, acceptance criterion, Definition of Done, dependencies, `status`.
+- **Card format (one line, links to the note):** `- [ ] [FR-XX (test|impl) — <short title>](../specs/NNN-slug/tasks/FR-XX-(test|impl).md) #spec/NNN-slug`. TDD pairs: the `(test)` card before the `(impl)` card.
+- **Tags** (`#spec/NNN-slug`) and the `FR-XX` id sit on the card line so [check-traceability](../../scripts/check-traceability.sh) can verify every requirement has a card.
+- **Moving a task:** cut the whole card line and paste it under the target lane; flip `[ ]`↔`[x]` only for `Done`; sync the note's `status`. Never edit the `%% kanban:settings %%` block.
 
 Enable the board view: open the **repo root** as an Obsidian vault. The *Kanban* plugin is already **pre-enabled** in `.obsidian/community-plugins.json`, but its binary is not bundled (third-party code), so the first time Obsidian will prompt you to install it — Settings → Community plugins → Browse → **Kanban** → Install. After that one-time install, [board](../board.md) renders as a board everywhere.
+
+### Don't want the board?
+
+It ships enabled, but it is optional. To drop it: delete `docs/board.md` and the `.obsidian/` folder, then pick **Jira** or **GitHub Projects** below. The task notes under `specs/NNN-slug/tasks/` are tracker-independent and stay useful either way.
 
 ## Alternative — Jira
 

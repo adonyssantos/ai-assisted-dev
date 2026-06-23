@@ -9,8 +9,8 @@ category: template
 
 ## Backlog
 
-- [ ] FR-01 (test) — write failing test for … #spec/NNN-slug
-- [ ] FR-01 (impl) — implement … to pass the test #spec/NNN-slug
+- [ ] [FR-01 (test) — write failing test for …](../specs/NNN-slug/tasks/FR-01-test.md) #spec/NNN-slug
+- [ ] [FR-01 (impl) — implement … to pass the test](../specs/NNN-slug/tasks/FR-01-impl.md) #spec/NNN-slug
 
 
 ## In Progress

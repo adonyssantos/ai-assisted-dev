@@ -37,7 +37,7 @@ Each command is a thin launcher for an expert subagent (see the table in [the wo
 | 2 | `/specify` | `sdd-specifier` | Scaffolds `specs/NNN-slug/spec.md` with `FR-NN` functional requirements and acceptance criteria. |
 | 3 | `/clarify` | `sdd-clarifier` | Resolves every `[NEEDS CLARIFICATION]` in the spec by asking you; no assumed business rules. |
 | 4 | `/plan` | `sdd-planner` | Writes `specs/NNN-slug/plan.md` — the HOW: chosen language, design, contracts. WHAT stays in the spec. |
-| 5 | `/tasks` | `sdd-tasker` | Adds cards to [the board](../board.md), one per requirement, tagged `#spec/NNN-slug`, as TDD pairs `FR-NN (test)` then `FR-NN (impl)`. |
+| 5 | `/tasks` | `sdd-tasker` | Writes one task note per task under `specs/NNN-slug/tasks/` and a one-line linking card on [the board](../board.md), tagged `#spec/NNN-slug`, as TDD pairs `FR-NN (test)` then `FR-NN (impl)`. |
 | 6 | `/analyze` | `sdd-analyzer` | Cross-checks spec ↔ plan ↔ board for gaps, conflicts and untraceable items before any code. |
 | 7 | `/tests` | `sdd-test-author` | Writes the failing test for each acceptance criterion under `projects/<name>/` and proves it is **red**. |
 | 8 | `/implement` | `sdd-implementer` | Writes the minimum code to turn the tests **green**, then refactors while green and moves cards to Done. |
