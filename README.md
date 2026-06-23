@@ -150,7 +150,7 @@ Once configured, run the flow in Claude Code:
 /draft → /specify → /clarify → /plan → /tasks → /analyze → /tests → /implement
 ```
 
-Or scaffold a feature folder by hand: `./scripts/new-feature.sh my-feature`.
+Optionally pre-scaffold the folder first: `./scripts/new-feature.sh my-feature` creates `specs/NNN-my-feature/` from the templates; `/specify` then **fills that same folder** in place (it detects the scaffold and never creates a duplicate number). Running `/specify` without scaffolding also works — it creates the folder itself. The two are one pipeline, not two competing ways.
 
 For a full step-by-step walkthrough, see the [quickstart](docs/getting-started/quickstart.md).
 

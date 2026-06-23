@@ -51,11 +51,11 @@ docs/draft.md → /draft → /specify → /clarify → /plan → /tasks → /ana
 
 What lands where:
 
-- **`specs/NNN-slug/`** — `spec.md` (WHAT/WHY, `FR-NN`) and `plan.md` (HOW). Scaffold a feature folder with `scripts/new-feature.sh <slug>` if you want it pre-created from the templates.
+- **`specs/NNN-slug/`** — `spec.md` (WHAT/WHY, `FR-NN`) and `plan.md` (HOW). Optionally pre-create the folder with `scripts/new-feature.sh <slug>`; `/specify` then fills that same folder (it reuses the scaffold and never makes a duplicate number). `/specify` alone also creates it.
 - **[the board](../board.md)** — one card per `FR-NN`, tagged `#spec/NNN-slug`, moving Backlog → In Progress → In Review → Done.
 - **`projects/<name>/`** — the actual code and its tests, in the language the plan chose. Each project is self-contained with its own `AGENTS.md`.
 
-Never weaken a test to make it pass (see [the constitution](../../memory/constitution.md), Article II). If a requirement is ambiguous, the agent flags it instead of inventing a rule.
+Never weaken a test to make it pass (see [the constitution](../../memory/constitution.md#tdd), `Constitution: tdd`). If a requirement is ambiguous, the agent flags it instead of inventing a rule.
 
 ## Where to look
 

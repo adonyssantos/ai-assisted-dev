@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
-# Scaffold a new feature folder in specs/ from the templates.
+# Scaffold a new feature folder in specs/ from the templates (OPTIONAL).
 # Usage: ./scripts/new-feature.sh <feature-slug>
+#
+# This is a convenience scaffolder, not a competitor to /specify. It only creates
+# the folder + empty templated spec.md/plan.md and assigns the next NNN. /specify
+# then DETECTS this folder and fills spec.md in place (it will not create a second
+# numbered folder). Running /specify WITHOUT scaffolding first also works — the
+# subagent creates the folder itself. Pick one entry point; they don't collide.
+#
 # Tasks are NOT created here — they live on the Obsidian board (docs/board.md) via /tasks.
 set -euo pipefail
 
@@ -40,6 +47,6 @@ sed -i -e "s/NNN-slug/${id}/g" \
        -e "s/{{DATE}}/${today}/g" \
        "$dir/spec.md" "$dir/plan.md"
 
-echo "Feature created: $dir"
-echo "Next: open Claude Code and run  /specify  describing the feature."
+echo "Feature scaffolded: $dir"
+echo "Next: in Claude Code run  /specify  — it fills THIS folder's spec.md (no new number)."
 echo "Tasks will be added to docs/board.md by  /tasks."
