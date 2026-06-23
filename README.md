@@ -152,6 +152,18 @@ Once configured, run the flow in Claude Code:
 
 Or scaffold a feature folder by hand: `./scripts/new-feature.sh my-feature`.
 
+For a full step-by-step walkthrough, see the [quickstart](docs/getting-started/quickstart.md).
+
+## Quality gates & CI
+
+Conventions are enforced, not just documented:
+
+- **`scripts/validate.sh`** — checks doc frontmatter, forbids `[[` wikilinks, verifies the Kanban block, scans example env files. Run it anytime; it must pass.
+- **`scripts/check-traceability.sh`** — verifies every `FR-XX` has a board card tagged `#spec/NNN-slug`.
+- **Git hooks** (`.githooks/`) — enable once with `git config core.hooksPath .githooks`. `pre-commit`/`pre-push` run the validator; `commit-msg` enforces Conventional Commits. Bypass with `--no-verify`.
+- **Claude Code hook** (`.claude/settings.json`) — a non-blocking advisory doc-lint on edits.
+- **CI** (`.github/workflows/`) — `validate.yml` runs the validator on push/PR; `tests.yml` is a per-project test skeleton. PRs use the Definition-of-Done template in `.github/PULL_REQUEST_TEMPLATE.md`.
+
 ## Principles
 
 1. **The spec rules.** Code contradicts spec → spec wins (or is updated explicitly).
