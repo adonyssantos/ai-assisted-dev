@@ -1,0 +1,65 @@
+{
+  // Generic multi-root VS Code workspace for the SDD + TDD template.
+  //
+  // This is a language-agnostic, polyglot monorepo: each project under
+  // projects/<name>/ may use any language. Settings here are intentionally
+  // technology-agnostic (editor/file behavior only) and mirror .editorconfig.
+  // Per-language formatters, linters, and personal/cosmetic settings belong
+  // in each project's own config — NOT here.
+
+  "folders": [
+    // Repo root. Always present.
+    { "path": "." }
+
+    // Add one entry per project under projects/<name>/ as the monorepo grows,
+    // so each project becomes its own root folder in the workspace. Example:
+    // { "path": "projects/my-service" }
+  ],
+
+  "settings": {
+    // --- File behavior (mirrors .editorconfig) ---
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+
+    // --- Editor indentation (mirrors .editorconfig) ---
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+
+    // --- Generic formatting (no defaultFormatter — that is per-language) ---
+    "editor.formatOnSave": true,
+
+    // --- Treat workspace files as JSONC (comments allowed) ---
+    "files.associations": {
+      "*.code-workspace": "jsonc"
+    },
+
+    // --- Hide common cross-ecosystem build/artifact dirs from search ---
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/build": true,
+      "**/out": true,
+      "**/.next": true,
+      "**/target": true,
+      "**/__pycache__": true,
+      "**/.venv": true,
+      "**/vendor": true,
+      "**/coverage": true
+    },
+
+    // --- Stop the file watcher from indexing those same dirs ---
+    "files.watcherExclude": {
+      "**/node_modules/**": true,
+      "**/dist/**": true,
+      "**/build/**": true,
+      "**/out/**": true,
+      "**/.next/**": true,
+      "**/target/**": true,
+      "**/__pycache__/**": true,
+      "**/.venv/**": true,
+      "**/vendor/**": true,
+      "**/coverage/**": true
+    }
+  }
+}
