@@ -38,3 +38,6 @@ Thumbs.db
 .obsidian/workspace*.json
 .obsidian/cache
 .obsidian/plugins/*/data.json
+
+# Track the workspace file even though the global gitignore ignores *.code-workspace
+!ai-assisted-dev.code-workspace
