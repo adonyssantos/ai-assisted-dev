@@ -55,7 +55,7 @@ In Mode 3, `docs/draft.md` is a stable north-star, not the daily driver. Never d
 | Traceability | Every board card references a requirement (`FR-XX`) and its spec id. |
 | Flag, don't assume | Mark every ambiguity `[NEEDS CLARIFICATION: ...]`; never invent business rules. |
 | Constitution wins | If a decision contradicts `memory/constitution.md`, stop and ask. |
-| Documentation rule | Every documentation `.md` follows `.claude/rules/documentation.md` (frontmatter + wikilinks). |
+| Documentation rule | Every documentation `.md` follows `.claude/rules/documentation.md` (frontmatter + relative links). |
 | Tasks → board | All tasks live in `docs/board.md` (Obsidian Kanban). See `docs/task-tracking.md` for Jira / GitHub Projects alternatives. |
 
 ## File conventions
@@ -64,4 +64,4 @@ In Mode 3, `docs/draft.md` is a stable north-star, not the daily driver. Never d
 - Code: `projects/<name>/` — self-contained, any language, own toolchain + optional `AGENTS.md`.
 - New `projects/<name>/` → the AI suggests adding it (`{ "path": "projects/<name>" }`) to `ai-assisted-dev.code-workspace` (suggestion only; applied with the user's OK).
 - Base skeletons live in `templates/`.
-- The repository root is an **Obsidian vault**; documentation uses YAML frontmatter and wikilinks.
+- The repository root is an **Obsidian vault**; documentation uses YAML frontmatter and relative Markdown links.

@@ -5,12 +5,12 @@ feature: NNN-slug
 status: Draft
 last_updated: {{DATE}}
 tags: [plan]
-related: ["[[spec]]"]
+related: ["spec.md"]
 ---
 
 # Technical plan: FEATURE_NAME
 
-**Spec:** [[spec]]
+**Spec:** [spec](spec.md)
 
 > Describe HOW. Technology goes here. Each decision links a requirement (FR-XX).
 
@@ -38,7 +38,7 @@ Relevant architecture decisions → ADR in `docs/architecture/adr/`.
 
 ## 5. Data model
 
-See [[data-model]].
+See [data-model](data-model.md).
 
 ## 6. Contracts / API
 

@@ -3,7 +3,7 @@ title: Domain
 category: overview
 last_updated: 2026-06-22
 tags: [index, domain, glossary]
-related: ["[[architecture/README|Architecture]]", "[[reference/README|Reference]]", "[[README|Docs home]]"]
+related: ["../architecture/README.md", "../reference/README.md", "../README.md"]
 ---
 
 # Domain
@@ -12,4 +12,4 @@ The problem space: ubiquitous language, glossary, business rules, and domain con
 
 ## Notes
 
-_No notes yet — add the glossary and domain concepts here. Create the glossary from [[../templates/glossary-template|the glossary template]], then link it back to this MOC and give it a `related` wikilink._
+_No notes yet — add the glossary and domain concepts here. Create the glossary from [the glossary template](../../templates/glossary-template.md), then link it back to this MOC and give it a `related` relative link._

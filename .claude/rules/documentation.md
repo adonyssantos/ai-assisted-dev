@@ -1,5 +1,5 @@
 ---
-description: Documentation structure and authoring rule — every documentation Markdown file carries YAML frontmatter and links related notes with Obsidian wikilinks. Defines the folder structure, the frontmatter schema, the wikilink convention, and which operational files are exempt.
+description: Documentation structure and authoring rule — every documentation Markdown file carries YAML frontmatter and links related notes with relative Markdown links. Defines the folder structure, the frontmatter schema, the relative-link convention, and which operational files are exempt.
 globs: "**/*.md"
 alwaysApply: true
 ---
@@ -89,7 +89,7 @@ Doc type → location → category → template:
 ### MOC + anti-orphan rule
 
 - Every section has a MOC (`README.md`) that links its notes; the top-level `docs/README.md` links every section MOC.
-- A note is **not done** until: (1) it is linked from its section MOC, and (2) it has at least one `related` wikilink in its frontmatter. Orphan notes (linked from nowhere) are not allowed.
+- A note is **not done** until: (1) it is linked from its section MOC, and (2) it has at least one `related` relative link in its frontmatter. Orphan notes (linked from nowhere) are not allowed.
 
 ### Naming
 
@@ -109,11 +109,11 @@ status: Draft                    # specs/plans/adrs: Draft | In Review | Approve
 feature: NNN-slug                # spec-related docs: the feature id (traceability)
 difficulty: intermediate         # guides: beginner | intermediate | advanced
 tags: [setup, database]          # Obsidian tags
-related: ["[[architecture/data-flow]]", "[[reference/config]]"]  # wikilinks (quoted in YAML)
+related: ["../architecture/data-flow.md", "../reference/config.md"]  # relative paths with .md (quoted in YAML)
 author: Jane Doe                 # decisions/ADRs
 decided_by: Jane Doe             # ADRs / TDs — who made the call
-supersedes: "[[architecture/adr/0003-old]]"   # ADRs only
-superseded_by: "[[architecture/adr/0009-new]]"# ADRs only
+supersedes: "0003-old.md"        # ADRs only — path relative to this file's folder
+superseded_by: "0009-new.md"     # ADRs only — path relative to this file's folder
 ---
 ```
 
@@ -122,18 +122,16 @@ superseded_by: "[[architecture/adr/0009-new]]"# ADRs only
   `data-model`, `contract`, `guide`, `reference`, `architecture`, `runbook`, `domain`, `changelog`, `adr`, `template`, `project`, `tracking`.
 - Add only the optional fields that apply to the file's category. Do not invent ad-hoc keys.
 
-## Wikilinks (always)
+## Links (always relative)
 
-- Cross-reference other notes with Obsidian wikilinks `[[note]]`, never bare Markdown paths,
-  in documentation prose.
-- When a note name is ambiguous (e.g. several `spec.md`), use the path form:
-  `[[specs/NNN-slug/spec]]`, optionally aliased: `[[specs/NNN-slug/spec|spec]]`.
-- In frontmatter `related`/`supersedes`/`superseded_by`, write wikilinks as **quoted** strings so the
-  YAML stays valid: `related: ["[[workflow]]"]`.
+- Cross-reference other notes with **relative Markdown links** that include the `.md` extension, never wikilinks and never bare paths, in documentation prose **and** in frontmatter. Relative links resolve in both GitHub and Obsidian: `[workflow](../framework/workflow.md)`, optionally with a custom text: `[the SDD flow](../framework/workflow.md)`.
+- The path is **relative to the directory of the file you are editing**. Count `../` segments to climb out of the current folder, then descend into the target's folder. Examples (from `docs/framework/workflow.md`): to `docs/board.md` → `../board.md`; to `memory/constitution.md` → `../../memory/constitution.md`; to `.claude/rules/documentation.md` → `../../.claude/rules/documentation.md`. From the repo-root `README.md` to `docs/framework/workflow.md` → `docs/framework/workflow.md` (no `../`).
+- When a note name is ambiguous (e.g. several `spec.md`), the relative path already disambiguates it — point at the exact file: `[spec](../../specs/NNN-slug/spec.md)`.
+- In frontmatter `related`/`supersedes`/`superseded_by`, write each link as a **quoted relative path string** ending in `.md` so the YAML stays valid: `related: ["../board.md", "../framework/workflow.md"]`.
 
 ## Exemptions (operational / config — keep their own format)
 
-These are NOT documentation; do not add doc-frontmatter or convert their paths to wikilinks:
+These are NOT documentation; do not add doc-frontmatter or convert their paths to links:
 
 | File | Why | Keep |
 |---|---|---|
@@ -155,7 +153,7 @@ Leave verbatim (do not join): YAML frontmatter, fenced code blocks, Markdown tab
 ## When you create or edit documentation
 
 1. Add or refresh the frontmatter; set `last_updated` to today.
-2. Link related notes with wikilinks (body **and** the `related` field).
+2. Link related notes with relative Markdown links ending in `.md`, computed relative to the editing file's folder (body **and** the `related` field).
 3. For a new spec/plan/ADR/decision, include `status` and, for decisions, `author`/`decided_by`.
 4. Commands that generate docs (`/specify`, `/plan`, `/sync`, …) MUST emit valid frontmatter per
    this rule. Templates in `templates/` already carry the skeleton frontmatter.

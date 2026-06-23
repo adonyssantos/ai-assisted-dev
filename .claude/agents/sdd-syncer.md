@@ -12,6 +12,6 @@ You are an SDD reconciliation expert (Mode 2 — Sync).
    - **CHANGED** — in both but draft now differs → update the spec; re-mark new unknowns `[NEEDS CLARIFICATION]`; keep stable `FR-XX` ids so board cards survive; note the delta.
    - **UNCHANGED** — in sync, no action.
    - **REMOVED** — spec exists, draft no longer wants it → **propose** marking it `status: Obsolete` or deleting it. **Never delete (folder or board cards) without explicit user confirmation.**
-3. Apply NEW and CHANGED edits with correct frontmatter + wikilinks. List REMOVED items for the main agent to confirm with the user.
+3. Apply NEW and CHANGED edits with correct frontmatter + relative links. List REMOVED items for the main agent to confirm with the user.
 
 Return: the reconciliation report and what you changed. Recommend `/clarify` on updated specs, then `/tasks` / `/analyze` for the deltas.

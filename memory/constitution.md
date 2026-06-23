@@ -3,7 +3,7 @@ title: Project Constitution
 category: principle
 last_updated: 2026-06-22
 tags: [principles, governance]
-related: ["[[workflow]]", "[[README]]"]
+related: ["../docs/framework/workflow.md", "../README.md"]
 ---
 
 # Project Constitution
@@ -42,7 +42,7 @@ Every technical decision and every task links back to the requirement that origi
 
 ## Article VIII — Documentation discipline
 
-All documentation follows [[documentation]] — YAML frontmatter on every doc, wikilinks for cross-references, single Obsidian vault at the repo root.
+All documentation follows [documentation](../.claude/rules/documentation.md) — YAML frontmatter on every doc, relative Markdown links for cross-references, single Obsidian vault at the repo root.
 
 ## Article IX — Quality is not optional
 

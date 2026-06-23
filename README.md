@@ -3,14 +3,14 @@ title: ai-assisted-dev — SDD + TDD template
 category: overview
 last_updated: 2026-06-22
 tags: [sdd, tdd, monorepo, claude-code, obsidian]
-related: ["[[workflow]]", "[[constitution]]", "[[task-tracking]]", "[[documentation]]"]
+related: ["docs/framework/workflow.md", "memory/constitution.md", "docs/framework/task-tracking.md", ".claude/rules/documentation.md"]
 ---
 
 # ai-assisted-dev — Spec-Driven Development template (Claude Code)
 
 A **language-agnostic, multi-language monorepo** template for building software with AI using **Spec-Driven Development (SDD)** and **Test-Driven Development (TDD)**. Code is derived from an explicit **specification**, and **tests are written before the code** that satisfies them. The spec is the source of truth; expert subagents execute each step traceably.
 
-Everything lives in one repo — the idea, the specs, the task board, the docs, and the code for every project, in any language. The repository root is an **Obsidian vault**: open it in Obsidian to browse all docs and the Kanban board with working wikilinks.
+Everything lives in one repo — the idea, the specs, the task board, the docs, and the code for every project, in any language. The repository root is an **Obsidian vault**: open it in Obsidian to browse all docs and the Kanban board with working relative links.
 
 ## Subagent-driven flow
 
@@ -66,7 +66,7 @@ The same artifacts and subagents serve three ways of working — only the entry 
 │   ├── commands/             # Thin launchers: draft, specify, clarify, plan, tasks, analyze,
 │   │                         #   tests, implement, sync
 │   ├── agents/               # Expert subagents (sdd-*, incl. sdd-spec-reviewer)
-│   ├── rules/documentation.md# Documentation rule (frontmatter + wikilinks)
+│   ├── rules/documentation.md# Documentation rule (frontmatter + relative links)
 │   └── settings.json         # Shared repo config (.env.example readable, real .env denied)
 ├── docs/                     # Vault content (Obsidian) — Diátaxis-style sections, each with a MOC README
 │   ├── README.md             # Top-level Map of Content
@@ -85,11 +85,11 @@ The same artifacts and subagents serve three ways of working — only the entry 
 
 ## Task tracking
 
-Default tracker: an **Obsidian Kanban board** at `docs/board.md` (see [[board]]). Open the repo as a vault — the *Kanban* plugin is vendored under `.obsidian/plugins/`, so the board renders without any install. The tracker is swappable — see [[task-tracking]] for **Jira** or **GitHub Projects** via MCP/CLI.
+Default tracker: an **Obsidian Kanban board** at `docs/board.md` (see [board](docs/board.md)). Open the repo as a vault — the *Kanban* plugin is vendored under `.obsidian/plugins/`, so the board renders without any install. The tracker is swappable — see [task-tracking](docs/framework/task-tracking.md) for **Jira** or **GitHub Projects** via MCP/CLI.
 
 ## Documentation
 
-All documentation follows [[documentation]]: YAML frontmatter on every doc, wikilinks for cross-references, one Obsidian vault at the repo root. Operational files (`CLAUDE.md`, `AGENTS.md`, `.claude/**`) are exempt and keep their functional format.
+All documentation follows [documentation](.claude/rules/documentation.md): YAML frontmatter on every doc, relative Markdown links for cross-references, one Obsidian vault at the repo root. Operational files (`CLAUDE.md`, `AGENTS.md`, `.claude/**`) are exempt and keep their functional format.
 
 ## Configure the template for your project
 
@@ -140,7 +140,7 @@ Rule files are operational config — exempt from the documentation frontmatter 
 ### Other config
 
 - **Obsidian / Kanban:** the vault is the repo root; the *Kanban* plugin is vendored under `.obsidian/plugins/`, so the board renders on open — no install needed.
-- **Task tracker:** the board (`docs/board.md`) is the default; swap to Jira or GitHub Projects via MCP/CLI — see [[task-tracking]].
+- **Task tracker:** the board (`docs/board.md`) is the default; swap to Jira or GitHub Projects via MCP/CLI — see [task-tracking](docs/framework/task-tracking.md).
 
 ### First feature
 

@@ -3,7 +3,7 @@ title: projects/ — Multi-language monorepo
 category: project
 last_updated: 2026-06-22
 tags: [monorepo, projects, polyglot]
-related: ["[[workflow]]"]
+related: ["../docs/framework/workflow.md"]
 ---
 
 # projects/

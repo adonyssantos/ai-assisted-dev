@@ -26,4 +26,4 @@ _How to confirm it worked._
 
 ## Related
 
-_Link adjacent guides, references, or specs with wikilinks._
+_Link adjacent guides, references, or specs with relative Markdown links._

@@ -4,14 +4,14 @@ category: guide
 difficulty: intermediate
 last_updated: 2026-06-22
 tags: [tasks, kanban, jira, github-projects]
-related: ["[[board]]", "[[workflow]]"]
+related: ["../board.md", "workflow.md"]
 ---
 
 # Task tracking
 
 Tasks are decoupled from the rest of the flow so the tracker is **swappable**. `sdd-tasker` and `sdd-implementer` write to whichever tracker is active.
 
-## Default — Obsidian Kanban ([[board]])
+## Default — Obsidian Kanban ([board](../board.md))
 
 - Single markdown file in the Obsidian *Kanban* plugin format (`docs/board.md`).
 - Lanes: `Backlog → In Progress → In Review → Done` (rename/add as you like).
@@ -19,7 +19,7 @@ Tasks are decoupled from the rest of the flow so the tracker is **swappable**. `
 - Tags (`#spec/NNN-slug`) tie each card to its spec for traceability.
 - Editable as plain markdown by the agent **and** as a visual board in Obsidian.
 
-Enable the board view: open the **repo root** as an Obsidian vault. The *Kanban* plugin is already **pre-enabled** in `.obsidian/community-plugins.json`, but its binary is not bundled (third-party code), so the first time Obsidian will prompt you to install it — Settings → Community plugins → Browse → **Kanban** → Install. After that one-time install, [[board]] renders as a board everywhere.
+Enable the board view: open the **repo root** as an Obsidian vault. The *Kanban* plugin is already **pre-enabled** in `.obsidian/community-plugins.json`, but its binary is not bundled (third-party code), so the first time Obsidian will prompt you to install it — Settings → Community plugins → Browse → **Kanban** → Install. After that one-time install, [board](../board.md) renders as a board everywhere.
 
 ## Alternative — Jira
 

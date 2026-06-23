@@ -4,7 +4,7 @@ category: guide
 difficulty: beginner
 last_updated: 2026-06-22
 tags: [workflow, sdd, tdd, subagents]
-related: ["[[constitution]]", "[[task-tracking]]", "[[board]]", "[[documentation]]"]
+related: ["../../memory/constitution.md", "task-tracking.md", "../board.md", "../../.claude/rules/documentation.md"]
 ---
 
 # Spec-Driven + Test-Driven workflow
@@ -41,15 +41,15 @@ Idea in `docs/draft.md`, `specs/` empty. `/draft` → per feature: `/specify` �
 `docs/draft.md` edited, specs exist. `/sync` diffs draft vs specs → **NEW** (create), **CHANGED** (update), **UNCHANGED** (skip), **REMOVED** (mark obsolete or, with explicit confirmation, delete). Then `/clarify` → `/tasks` → `/tests` → `/implement` for the deltas. `FR-XX` ids stay stable so board cards survive.
 
 ### Mode 3 — Maintenance (mature product)
-`docs/draft.md` is a stable north-star. New feature → `/specify <feature>` → … . Bug/support → write a **failing regression test first**, fix under `projects/`, ADR if architectural. Keep [[board]] and specs living.
+`docs/draft.md` is a stable north-star. New feature → `/specify <feature>` → … . Bug/support → write a **failing regression test first**, fix under `projects/`, ADR if architectural. Keep [board](../board.md) and specs living.
 
 ## TDD loop (per requirement)
 
 1. `sdd-test-author` writes a failing test for the acceptance criterion and proves it is **red**.
 2. `sdd-implementer` writes the minimum code to make it **green**.
-3. Refactor while green. Move the card to Done on [[board]].
+3. Refactor while green. Move the card to Done on [board](../board.md).
 
-Never weaken a test to pass it (see [[constitution]] Article II).
+Never weaken a test to pass it (see [constitution](../../memory/constitution.md) Article II).
 
 ## Golden rules
 

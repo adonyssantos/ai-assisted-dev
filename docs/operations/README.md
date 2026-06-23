@@ -3,7 +3,7 @@ title: Operations
 category: overview
 last_updated: 2026-06-22
 tags: [index, operations, runbook]
-related: ["[[architecture/README|Architecture]]", "[[reference/README|Reference]]", "[[README|Docs home]]"]
+related: ["../architecture/README.md", "../reference/README.md", "../README.md"]
 ---
 
 # Operations
@@ -12,4 +12,4 @@ Running the system in the real world: deployment, monitoring, incident response,
 
 ## Notes
 
-_No notes yet — add runbooks and operational guides here. Create one from [[../templates/runbook-template|the runbook template]], then link it back to this MOC and give it a `related` wikilink._
+_No notes yet — add runbooks and operational guides here. Create one from [the runbook template](../../templates/runbook-template.md), then link it back to this MOC and give it a `related` relative link._

@@ -21,7 +21,7 @@ _Components and how they fit. Add a diagram if it helps._
 
 ## Decisions
 
-_Link the ADRs under [[adr/]] that justify this structure._
+_Link the ADRs under [adr/](adr/) that justify this structure._
 
 ## Related
 

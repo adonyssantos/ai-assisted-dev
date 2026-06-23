@@ -41,7 +41,7 @@ Pre-1.0: breaking changes may bump MINOR; state the policy in the README.
 
 ## Correct vs wrong
 
-Correct: `### Added — Session refresh now rejects expired tokens ([[specs/014-session-refresh/spec|FR-07]]).` then bump 1.3.0 → 1.4.0.
+Correct: `### Added — Session refresh now rejects expired tokens ([FR-07](specs/014-session-refresh/spec.md)).` then bump 1.3.0 → 1.4.0.
 
 Wrong: PATCH bump for a breaking API change; changelog = pasted `git log`.
 
