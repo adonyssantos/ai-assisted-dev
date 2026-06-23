@@ -85,6 +85,12 @@ These are NOT documentation; do not add doc-frontmatter or convert their paths t
 
 In operational files, file paths are literal instructions to the agent — leave them as paths.
 
+## Line wrapping (no hard wraps)
+
+Do NOT hard-wrap text. Write each paragraph, list item, blockquote line, and heading as a SINGLE physical line; rely on the editor's soft-wrap. Separate blocks with one blank line. Manual mid-sentence line breaks render as unexpected breaks in Obsidian.
+
+Leave verbatim (do not join): YAML frontmatter, fenced code blocks, Markdown table rows (one row per line is required), and Kanban board card lists.
+
 ## When you create or edit documentation
 
 1. Add or refresh the frontmatter; set `last_updated` to today.
@@ -92,3 +98,4 @@ In operational files, file paths are literal instructions to the agent — leave
 3. For a new spec/plan/ADR/decision, include `status` and, for decisions, `author`/`decided_by`.
 4. Commands that generate docs (`/specify`, `/plan`, `/sync`, …) MUST emit valid frontmatter per
    this rule. Templates in `templates/` already carry the skeleton frontmatter.
+5. Do NOT hard-wrap — one physical line per paragraph/list item/blockquote/heading (see §Line wrapping); rely on soft-wrap.
